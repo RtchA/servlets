@@ -5,14 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>java-template</artifactId>
+    <artifactId>servlets</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <lombok.version>1.18.24</lombok.version>
-        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.3.2</maven-assembly-plugin.version>
+        <jakarta.servlet-api.version>.</jakarta.servlet-api.version>
     </properties>
 
     <dependencies>
@@ -22,34 +24,23 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-           </dependencies>
+        <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0${jakarta.servlet-api.version}0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
 
     <build>
-        <finalName>app</finalName>
         <plugins>
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven-assembly-plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.example.Main</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
 
-</project>
+  </project>

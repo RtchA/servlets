@@ -1,8 +1,10 @@
 package org.example.servlet;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
 
 import java.io.IOException;
+@WebServlet ("/hi")
 
 public class HelloServlet implements Servlet {
     @Override
